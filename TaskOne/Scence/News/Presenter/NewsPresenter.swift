@@ -27,16 +27,20 @@ protocol NewsPresenter {
     func viewDidLoad()
     func numberOfRow() -> Int
     func configure(cell: NewsCellView, forRow row: Int)
+    func goTo(index: Int)
+
 }
 
 
 
 class NewsPresenterImplementation: NewsPresenter {
+   
+    
     fileprivate weak var view: NewsView?
     internal let router: NewsRouter
     internal let interactor : NewsInteractor
     private var news = [NewsModel]()
-    
+
     init(view: NewsView,router: NewsRouter,interactor:NewsInteractor) {
         self.view = view
         self.router = router
@@ -79,11 +83,14 @@ class NewsPresenterImplementation: NewsPresenter {
         cell.displayAuthor(author: news.articles![row].title)
     }
     
-    func didSelectRow(index:Int){
+    func goTo(index:Int){
         let news = news[index]
-        view?.navigateToDetails(item: news)
+        self.router.showDetails(news: news )
+
     }
     
-  
+    
+    
+   
     
 }
