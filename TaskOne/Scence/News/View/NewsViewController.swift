@@ -31,6 +31,8 @@ final class NewsViewController: UIViewController {
 
 
 extension NewsViewController: NewsView {
+  
+    
    
     
   
@@ -55,5 +57,9 @@ extension NewsViewController: NewsView {
     
     func navigateToDetails(item: NewsModel) {
         
+    }
+    
+    func NoData() {
+        print("NO Data Found")
     }
 }

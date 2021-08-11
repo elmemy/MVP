@@ -14,6 +14,7 @@ protocol NewsView: AnyObject {
     func fetchingDataSuccess()
     func showEror(error:String)
     func navigateToDetails(item:NewsModel)
+    func NoData()
 }
 
 
@@ -27,19 +28,24 @@ protocol NewsPresenter {
     func viewDidLoad()
     func numberOfRow() -> Int
     func configure(cell: NewsCellView, forRow row: Int)
-    func goTo(index: Int)
+    func didSelect(index: Int)
+    func pagination(index:Int)
+    func getPagiateData()
 
 }
 
 
 
 class NewsPresenterImplementation: NewsPresenter {
-   
+
     
     fileprivate weak var view: NewsView?
     internal let router: NewsRouter
     internal let interactor : NewsInteractor
-    private var news = [NewsModel]()
+    private var news: [Articles] = []
+    
+    private var page: Int = 1
+    private var isLast: Bool = false
 
     init(view: NewsView,router: NewsRouter,interactor:NewsInteractor) {
         self.view = view
@@ -60,15 +66,27 @@ class NewsPresenterImplementation: NewsPresenter {
     
     func getData(){
         view?.showInteractor()
-        interactor.getNews{[weak self] data,error in
+        interactor.getNews(page: page){[weak self] data,error in
             guard let self = self else {return}
             self.view?.hideInteractor()
             if let error = error{
                 self.view?.showEror(error: error.localizedDescription)
             }else{
                 guard let data = data else {return}
-                self.news = [data]
-                self.view?.fetchingDataSuccess()
+                self.page += 1
+                self.news = data.articles ?? []
+                if self.news.count < 20{
+                    self.isLast = true
+                }else{
+                    self.isLast = false
+                }
+                
+                if self.news.count == 0{
+                    self.view?.NoData()
+                    
+                }else{
+                    self.view?.fetchingDataSuccess()
+                }
             }
         }
     }
@@ -77,18 +95,34 @@ class NewsPresenterImplementation: NewsPresenter {
 
     
     func configure(cell: NewsCellView, forRow row: Int) {
-        let news = news[row]
-        cell.displayTitle(name: news.articles![row].title)
-        cell.displayDesc(desc: news.articles![row].title)
-        cell.displayAuthor(author: news.articles![row].title)
+        let news = self.news[row]
+        cell.displayTitle(name: news.title)
+        cell.displayDesc(desc: news.description ?? "")
+        cell.displayAuthor(author: news.author ?? "")
     }
     
-    func goTo(index:Int){
-        let news = news[index]
+    func didSelect(index:Int){
+        let news = self.news[index]
         self.router.showDetails(news: news )
 
     }
     
+    
+    func pagination(index: Int) {
+        
+        if index + 1 == self.news.count && (index + 1) % 20 == 0 && !self.isLast {
+            self.getData()
+        }
+    }
+    
+    func getPagiateData() {
+        self.page = 1
+        self.news = []
+        self.isLast = false
+        self.getData()
+    }
+    
+   
     
     
    

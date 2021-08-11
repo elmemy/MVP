@@ -30,12 +30,16 @@ extension NewsViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.presenter?.goTo(index: indexPath.row)
+        self.presenter?.didSelect(index: indexPath.row)
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.presenter?.pagination(index: indexPath.row)
     }
     
 }

@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol NewsRouter {
-    func showDetails(news: NewsModel)
+    func showDetails(news: Articles)
 
 }
 
@@ -20,7 +20,7 @@ class NewsRouterImplementation: NewsRouter {
         self.NewsViewController = NewsViewController
     }
     
-    func showDetails(news: NewsModel) {
+    func showDetails(news: Articles) {
         let configurator = NewsDetailsConfiguratorImplementation()
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsDetailsViewController") as! NewsDetailsViewController
         configurator.configure(NewsDetailsViewController: vc, news: news)

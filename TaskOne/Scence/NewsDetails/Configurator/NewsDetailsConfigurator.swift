@@ -9,18 +9,18 @@ import Foundation
 
 
 protocol NewsDetailsConfigurator {
-    func configure(NewsDetailsViewController:NewsDetailsViewController)
+    func configure(NewsDetailsViewController:NewsDetailsViewController, news: Articles)
 }
 
 
-class NewsDetailsConfiguratorImplementation {
+class NewsDetailsConfiguratorImplementation:  NewsDetailsConfigurator{
 
-    func configure(NewsDetailsViewController:NewsDetailsViewController, news: NewsModel) {
+    func configure(NewsDetailsViewController:NewsDetailsViewController, news: Articles) {
         let view = NewsDetailsViewController
         let router = NewsDetailsRouterImplementation(NewsDetailsViewController: view)
         
         let interactor = NewsDetailsInteractor()
-        let presenter = NewsDetailsPresenterImplementation(view: view, router: router,interactor:interactor, news: news)
+        let presenter = NewsDetailsPresenterImplementation(view: view, router: router,interactor:interactor,news: news)
         
         
         NewsDetailsViewController.presenter = presenter

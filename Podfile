@@ -9,27 +9,27 @@ target 'TaskOne' do
 
 
 
-
-  pod 'BEMCheckBox'
-  pod 'Cosmos'
-  pod 'Kingfisher'
-  pod 'Firebase/Core'
-  pod 'Firebase/Messaging'
-  pod 'NotificationBannerSwift'
-  pod 'IQKeyboardManagerSwift'
   pod 'Alamofire'
-  pod 'ImageSlideshow', '~> 1.6'
-  pod 'ImageSlideshow/Kingfisher'
-  pod 'GoogleMaps'
-  pod 'SwiftyJSON', '~> 4.0'
-  pod 'GooglePlaces'
-  pod 'SwiftEntryKit'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
-  pod 'Localize-Swift', '~> 3.2'
-  pod "TLPhotoPicker"
   pod 'SKActivityIndicatorView'
-  pod 'Socket.IO-Client-Swift', '~> 15.2.0'
+#
+#  pod 'BEMCheckBox'
+#  pod 'Cosmos'
+#  pod 'Kingfisher'
+#  pod 'Firebase/Core'
+#  pod 'Firebase/Messaging'
+#  pod 'NotificationBannerSwift'
+#  pod 'IQKeyboardManagerSwift'
+#  pod 'ImageSlideshow', '~> 1.6'
+#  pod 'ImageSlideshow/Kingfisher'
+#  pod 'GoogleMaps'
+#  pod 'SwiftyJSON', '~> 4.0'
+#  pod 'GooglePlaces'
+#  pod 'SwiftEntryKit'
+#  pod 'Firebase/Auth'
+#  pod 'Firebase/Firestore'
+#  pod 'Localize-Swift', '~> 3.2'
+#  pod "TLPhotoPicker"
+#  pod 'Socket.IO-Client-Swift', '~> 15.2.0'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|

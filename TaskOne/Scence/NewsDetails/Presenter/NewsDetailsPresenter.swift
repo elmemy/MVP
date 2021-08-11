@@ -25,10 +25,10 @@ class NewsDetailsPresenterImplementation: NewsDetailsPresenter {
     fileprivate weak var view: NewsDetailsView?
     let router: NewsDetailsRouter
     let interactor : NewsDetailsInteractor
-    private let news: NewsModel
+    private let news: Articles
 
     
-    init(view: NewsDetailsView,router: NewsDetailsRouter,interactor:NewsDetailsInteractor, news: NewsModel) {
+    init(view: NewsDetailsView,router: NewsDetailsRouter,interactor:NewsDetailsInteractor, news: Articles) {
         self.view = view
         self.router = router
         self.interactor = interactor
@@ -38,7 +38,7 @@ class NewsDetailsPresenterImplementation: NewsDetailsPresenter {
 
     
     func viewDidLoad() {
-        print(news.articles)
+        print(news.title)
     }
     
     func configure(cell: NewsDetailsCellView, forRow row: Int) {

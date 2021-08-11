@@ -9,7 +9,7 @@ import Foundation
 
  class NewsInteractor {
     
-    func getNews(completionHandler: @escaping (NewsModel?, Error?) -> ()) {
+    func getNews(page:Int,completionHandler: @escaping (NewsModel?, Error?) -> ()) {
 
         var itemResponse: CallResponse<NewsModel> {
             return {[weak self] (response) in
