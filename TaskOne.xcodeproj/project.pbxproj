@@ -412,7 +412,6 @@
 				AD7394FE26BFCE36006AA4C1 /* Frameworks */,
 				AD7394FF26BFCE36006AA4C1 /* Resources */,
 				B920930FA2C653AAC1924709 /* [CP] Embed Pods Frameworks */,
-				EE5530BECFE4FC013036069A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -511,23 +510,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TaskOne/Pods-TaskOne-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EE5530BECFE4FC013036069A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TaskOne/Pods-TaskOne-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TaskOne/Pods-TaskOne-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TaskOne/Pods-TaskOne-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
