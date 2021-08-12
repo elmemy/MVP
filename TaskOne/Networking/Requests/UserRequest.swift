@@ -13,7 +13,7 @@ enum APIRouter: URLRequestBuilder {
 
     case login(email: String, password: String)
     case register(email: String, password: String, phone: String)
-    case news
+    case news(page:Int)
 
     // MARK: - Path
     internal var path: String {
@@ -38,13 +38,13 @@ enum APIRouter: URLRequestBuilder {
             params["email"] = email
             params["password"] = password
             params["phone"] = phone
-        case .news:
+        case .news(let page):
             params["q"] = "apple"
             params["from"] = "2021-07-20"
             params["to"] = "2021-07-28"
             params["apiKey"] = "69ae0054edc94e5dae2ef8c411c1e13f"
             params["pageSize"] = "20"
-            params["page"] = "1"
+            params["page"] = "\(page)"
 
         }
         

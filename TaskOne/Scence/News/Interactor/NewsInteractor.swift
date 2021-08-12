@@ -23,9 +23,7 @@ import Foundation
         }
       
             // creating request with the builder enum
-            APIRouter.news.send(NewsModel.self, then: itemResponse)
-        
-        
+        APIRouter.news(page: page).send(NewsModel.self, then: itemResponse)
    
     }
  }
